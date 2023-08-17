@@ -23,6 +23,4 @@ def dalle(msg_arr):
         response_format="url"
     )
     
-    image_url3 = response['data'][2]['url']
-
     return response
