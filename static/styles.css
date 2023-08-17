@@ -70,6 +70,7 @@ button[type="submit"] {
     background-color: #FEFBE7;
     color: #354259;
     padding: 10px;
+    margin: 5px;
     border: none;
     border-radius: 5px;
     box-shadow: 2px 2px 5px #A0BCC2;
@@ -80,6 +81,7 @@ button[type="submit"] {
     background-color: #FEFBE7;
     color: #354259;
     padding: 10px;
+    margin: 5px;
     border: none;
     border-radius: 5px;
     box-shadow: 2px 2px 5px #A0BCC2;
@@ -136,14 +138,63 @@ textarea {
     resize: none;
 }
 
+/* image reverse */
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 512px;
+    height: 512px;
+    /* perspective: 300px; */
+}
+
+.container .item {
+    width: 512px;
+    height: 512px;
+    border: 1px solid #828282;
+    font-size: 35px;
+    backface-visibility: hidden;
+    transition: 1s;
+
+    max-width: 800px;
+
+    line-height: 1.6;
+    border: 2px solid black;
+    box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+
+    line-height: 1.6;
+    border: 2px solid black;
+    box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.container .item.front {
+    position: absolute;
+    transform: rotateY(0deg);
+}
+
+.container:hover .item.front {
+    transform: rotateY(180deg);
+}
+
+.container .item.back {
+    position: absolute;
+    transform: rotateY(-180deg);
+}
+
+.container:hover .item.back {
+    transform: rotateY(0deg);
+}
+
 /* 편지 스타일 */
-.letter-container {
+#letter-container {
     background-color: #f5e8d5;
-    max-width: 640px;
-    margin: 3rem auto; /* 중앙 배치를 위한 margin */
-    padding: 2rem;
     font-family: 'TmoneyRoundWindExtraBold';
     font-size: 18px;
+    max-width: 800px;
+    padding: 2rem;
     line-height: 1.6;
     border: 2px solid black;
     box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.2);
