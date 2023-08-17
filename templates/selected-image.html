@@ -1,11 +1,20 @@
-
 <!DOCTYPE html>
 <html lang="ko">
+<link rel="stylesheet" href="../static/styles.css">
+
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <title>이미지 테스트</title>
 </head>
+
 <body>
-    <img alt="예제 이미지" src={{image_url}} >
+    <header>
+        <div class="header-container">
+            <div id="logo"><a href="./" style="text-decoration:none">Pictter</a></div>
+        </div>
+    </header>
+    <img id="example-image" alt="예제 이미지" src="{{image_url}}">
+    <button id="download-button" onclick="downloadImage()">이미지 저장</button>
 </body>
+
 </html>
