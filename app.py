@@ -1,4 +1,5 @@
 from flask import Flask, request, render_template
+from ChatGPT import ChatGPT
 
 app = Flask(__name__)
 
@@ -13,8 +14,8 @@ def index():
 @app.route('/letter', methods=['POST'])
 def result():
     letter = request.form.get('letter')
-    return f'''편지 보내주셔서 감사합니다!\
-    {letter}'''
+    keyword = ChatGPT(letter)
+    return render_template("letter.html",keyword=keyword)
 
 if __name__ == '__main__':
     app.run(debug=True)
