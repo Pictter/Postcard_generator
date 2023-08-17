@@ -14,7 +14,7 @@ def dalle(msg_arr):
         user_keyword+=keyword
 
     # 시스템 임의 설정
-    input_prompt="create background postcard painting with"+user_keyword+"and no person and no text."
+    input_prompt="create background postcard painting with"+user_keyword+"and no person and text."
 
     response = openai.Image.create(
         prompt=input_prompt,
@@ -22,6 +22,7 @@ def dalle(msg_arr):
         size="512x512",
         response_format="url"
     )
-    # image_url3 = response['data'][2]['url']
+    
+    image_url3 = response['data'][2]['url']
 
     return response
