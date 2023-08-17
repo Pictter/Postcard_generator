@@ -1,8 +1,11 @@
 import openai
+import dotenv
+import os
 
 # OpenAI API 키 설정
-api_key = "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"
-openai.api_key = api_key
+dotenv_file = dotenv.find_dotenv()
+dotenv.load_dotenv(dotenv_file)
+openai.api_key = os.environ["API_KEY"]
 
 # ChatGPT API 호출
 def ChatGPT(input_msg):
