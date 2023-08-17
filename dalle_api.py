@@ -1,21 +1,23 @@
 import openai
 import requests
 
-url = "http://localhost:5000/send"
-openai.api_key = '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'
+openai.api_key = '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'
 
-user_prompt = ""
+user_prompt = "love warm "
 add_prompt = "background"
 input_prompt=user_prompt+add_prompt
 response = openai.Image.create(
-    prompt="awesome cat",
-    n=1,
+    prompt=input_prompt,
+    n=3,
     size="1024x1024",
-    response_format="b64_json"
+    response_format="url"
 )
 
-image_url = response['data'][0]['b64_json']
-response = requests.post(url, data={"text_data": image_url})
-if response.status_code == 200:
-    print("서버 응답:", response.text)
-    print("Test")
+
+image_url1 = response['data'][0]['url']
+image_url2 = response['data'][1]['url']
+image_url3 = response['data'][2]['url']
+
+print(image_url1)
+print(image_url2)
+print(image_url3)
