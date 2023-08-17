@@ -18,7 +18,6 @@ def letter():
     letter = request.form.get('letter')
     global keyword 
     keyword = ChatGPT(letter)
-
     return render_template("letter.html",keyword=keyword)
 
 @app.route('/image')
