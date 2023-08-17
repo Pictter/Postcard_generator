@@ -1,2 +1,4 @@
-text.*
-*pycache*
+*.txt
+__pycache__/
+config/
+.env
