@@ -13,7 +13,8 @@ def index():
 @app.route('/letter', methods=['POST'])
 def result():
     letter = request.form.get('letter')
-    return f'편지 보내주셔서 감사합니다! \n{letter}'
+    return f'''편지 보내주셔서 감사합니다!\
+    {letter}'''
 
 if __name__ == '__main__':
     app.run(debug=True)
