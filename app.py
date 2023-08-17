@@ -18,15 +18,17 @@ def letter():
     letter = request.form.get('letter')
     global keyword 
     keyword = ChatGPT(letter)
-    # image = dalle(keyword)
-    # print(image)
+
     return render_template("letter.html",keyword=keyword)
 
 @app.route('/image')
 def img():
     global keyword
-    
-
+    image_response = dalle(keyword)
+    image_url=[]
+    for i in range(0,3,1):      
+        image_url.append(image_response['data'][i]['url'])
+    return render_template("image.html", image_url=image_url)
 
 
 if __name__ == '__main__':
