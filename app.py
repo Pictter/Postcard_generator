@@ -41,7 +41,8 @@ def img():
 def selected_image():
     data = request.json
     img_src = data['imgSrc']
-    return render_template("selected-image.html",image_url=img_src)
+    
+    return render_template("selected-image.html",image_url=img_src, letter = session["input_text_"] )
 
 if __name__ == "__main__":
     app.run(debug=True)

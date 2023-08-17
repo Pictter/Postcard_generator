@@ -130,3 +130,21 @@ textarea {
     margin-bottom: 10px;
     resize: none;
 }
+
+/* 편지 스타일 */
+.letter-container {
+    background-color: #f5e8d5;
+    max-width: 640px;
+    margin: 3rem auto; /* 중앙 배치를 위한 margin */
+    padding: 2rem;
+    font-family: 'TmoneyRoundWindExtraBold';
+    font-size: 18px;
+    line-height: 1.6;
+    border: 2px solid black;
+    box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.indent {
+    text-indent: 2em;
+}
