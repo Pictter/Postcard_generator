@@ -1,9 +1,11 @@
 from flask import Flask, request, render_template, session
 from ChatGPT import ChatGPT
 from DALLE2 import dalle
+from _auth import random_string, md5_hash
 
 app = Flask(__name__)
-app.secret_key = "your_secret_key_here"
+
+app.secret_key = md5_hash(random_string(32))
 
 @app.route("/")
 def root():
@@ -27,6 +29,8 @@ def letter():
 def img():
     keyword = session.get("keyword_")
     input_text_ = session.get("input_text_")
+    print(keyword)
+    print(input_text_)
     image_response = dalle(keyword)
     image_url = []
     for i in range(0, 3, 1):
