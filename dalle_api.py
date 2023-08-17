@@ -4,6 +4,9 @@ import requests
 url = "http://localhost:5000/send"
 openai.api_key = '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'
 
+user_prompt = ""
+add_prompt = "background"
+input_prompt=user_prompt+add_prompt
 response = openai.Image.create(
     prompt="awesome cat",
     n=1,
@@ -15,3 +18,4 @@ image_url = response['data'][0]['b64_json']
 response = requests.post(url, data={"text_data": image_url})
 if response.status_code == 200:
     print("서버 응답:", response.text)
+    print("Test")
