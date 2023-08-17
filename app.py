@@ -37,5 +37,11 @@ def img():
         image_url.append(image_response["data"][i]["url"])
     return render_template("image.html", image_url=image_url)
 
+@app.route('/selected-image', methods=['POST'])
+def selected_image():
+    data = request.json
+    img_src = data['imgSrc']
+    return render_template("selected-image.html",image_url=img_src)
+
 if __name__ == "__main__":
     app.run(debug=True)
