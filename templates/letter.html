@@ -9,14 +9,13 @@
 
 <body>
     <header>
-        <div class="header-container">
-            <div id="logo"><a href="./" style="text-decoration:none">Pictter</a></div>
-        </div>
+        <h1>Pictter</h1>
     </header>
     <h1>편지를 보내주셔서 감사합니다.</h1>
-
+    <p> 
     <h3>입력해주신 편지를 기반으로 추출된 키워드를 알려드릴게요!</h3>
-    혹시 마음에 들지 않는 키워드가 있으면 눌러주세요. 이미지 생성할 때 제외해 드리겠습니다!
+    혹시 마음에 들지 않는 키워드가 있으면 눌러주세요. 이미지 생성할 때 제외해 드리겠습니다. 
+
     <div  id = "button-keyword" data-keywords='{{ keyword|tojson|safe }}'>
         <button type="submit" onclick="removeKeyword(0)">{{keyword[0]}}</button>
         <button type="submit" onclick="removeKeyword(1)">{{keyword[1]}}</button>
