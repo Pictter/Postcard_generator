@@ -1,11 +1,10 @@
 import openai
 
-# OpenAI API 키 설정
-api_key = "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"
+api_key = "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"
+
 openai.api_key = api_key
 
 # ChatGPT API 호출
-
 
 def ChatGPT(input_msg):
     response = openai.ChatCompletion.create(
