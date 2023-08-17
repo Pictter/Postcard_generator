@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<link rel="stylesheet" href="../static/CSS/styles.css">
+<head>
+    <title>Pictter</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Pictter!</h1>
+    </header>
+    <h1>편지를 입력해주세요.</h1>
+    <form method="POST" action="/letter">
+        <label for="letter">내용:</label>
+        <textarea id="letter" name="letter" required rows="10" cols="80"></textarea>
+        <button type="submit">편지 보내기</button>
+    </form>
+</body>
+</html>
