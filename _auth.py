@@ -9,4 +9,4 @@ def random_string(size: int) -> str:
 def md5_hash(text: str) -> str:
     m = hashlib.md5()
     m.update(text.encode('utf-8'))
-    return m.hexdigest()
+    return m.hexdigest() 

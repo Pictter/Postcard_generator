@@ -19,7 +19,7 @@ def index():
 @app.route('/letter', methods=['POST'])
 def letter():
     letter_text = request.form.get("letter")
-    keyword = ChatGPT(letter_text)
+    keyword = ChatGPT(letter_text).split(', ')
     session["input_text_"] = letter_text
     session["keyword_"] = keyword  # 세션에 값을 저장
     return render_template("letter.html", keyword=keyword)
@@ -36,6 +36,12 @@ def img():
     for i in range(0, 3, 1):
         image_url.append(image_response["data"][i]["url"])
     return render_template("image.html", image_url=image_url)
+
+@app.route('/selected-image', methods=['POST'])
+def selected_image():
+    data = request.json
+    img_src = data['imgSrc']
+    return render_template("selected-image.html",image_url=img_src)
 
 if __name__ == "__main__":
     app.run(debug=True)
