@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html>
 <link rel="stylesheet" href="../static/styles.css">
@@ -13,12 +12,11 @@
 <body>
     <div class="container">
 
-        <img class="item front" alt="예제 이미지" src={{image_url}} >
+        <img id="image" class="item front" alt="예제 이미지" src={{image_url}}>
         <div class="item back" id="letter-container">
             {{letter}}
         </div>
     </div>
-    <button id="download-btn" onclick="captureAndDownloadImage()">다운로드</button>
-    <script src="{{ url_for('static', filename='download.js') }}"></script>
-</body>
+
+
 </html>
