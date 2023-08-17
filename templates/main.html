@@ -10,38 +10,17 @@
 <body>
     <header>
         <div class="header-container">
-            <div id="logo"><a href="/" style="text-decoration:none">Pictter</a></div>
+            <div id="logo"><a href="./" style="text-decoration:none">Pictter</a></div>
         </div>
     </header>
     </div>
     <div class="center-container">
         <h1>편지를 입력해주세요.</h1>
         <form method="POST" action="/letter">
-            <label for="letter">내용:</label>
-            <textarea id="letter" name="letter" required rows="10" cols="80"></textarea>
-            <button type="submit">편지 보내기</button>
+            <textarea id="letter" name="letter" required rows="10" placeholder="contents" cols="80"></textarea>
+            <div class="button-container">
+                <button type="submit">편지 보내기</button>
+            </div>
         </form>
     </div>
 </body>
-=======
-<!doctype html>
-<html>
-
-<head>
-    <title>Pictter</title>
-</head>
-
-<body>
-    <h1>편지를 입력해주세요.</h1>
-    <form method="POST" action="/letter">
-        <label for="letter">내용:</label>
-        <input type="text" id="letter" name="letter" required size="80%">
-        <button type="submit">편지 보내기</button>
-    </form>
-</body>
-<<<<<<< HEAD
-</html>
-=======
-
-</html>
->>>>>>> aafee92fdc2a82fc6ad9e32cd6e293f3b7cc9606
