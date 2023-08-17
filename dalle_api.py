@@ -1,23 +1,25 @@
 import openai
 import requests
 
-openai.api_key = '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'
+openai.api_key = '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'
 
-user_prompt = "love warm "
-add_prompt = "background"
-input_prompt=user_prompt+add_prompt
-response = openai.Image.create(
-    prompt=input_prompt,
-    n=3,
-    size="1024x1024",
-    response_format="url"
-)
+def dalle(msg_arr):
+    user_keyword = ""
+    for keyword in msg_arr:
+        user_keyword+=keyword
 
+    # 시스템 임의 설정
+    add_prompt = "background"
+    input_prompt=user_keyword+add_prompt
 
-image_url1 = response['data'][0]['url']
-image_url2 = response['data'][1]['url']
-image_url3 = response['data'][2]['url']
+    response = openai.Image.create(
+        prompt=input_prompt,
+        n=3,
+        size="512x512",
+        response_format="url"
+    )
+    image_url1 = response['data'][0]['url']
+    image_url2 = response['data'][1]['url']
+    image_url3 = response['data'][2]['url']
 
-print(image_url1)
-print(image_url2)
-print(image_url3)
+    return image_url1, image_url2, image_url3
