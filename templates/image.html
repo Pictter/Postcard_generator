@@ -1,14 +1,15 @@
-
 <!DOCTYPE html>
 <html lang="ko">
+<link rel="stylesheet" href="../static/styles.css">
+
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <title>image test</title>
     <script>
         function getImageSrc(event) {
             var imgSrc = event.target.src;
             console.log(imgSrc);
-            
+
             fetch('/selected-image', {
                 method: 'POST',
                 body: JSON.stringify({ imgSrc: imgSrc }),
@@ -16,17 +17,29 @@
                     'Content-Type': 'application/json'
                 }
             }).then(response => response.text())
-              .then(html => {
-                  document.querySelector("body").innerHTML = html;
-              });
+                .then(html => {
+                    document.querySelector("body").innerHTML = html;
+                });
         }
     </script>
 </head>
+
 <body>
-    <div style="display: flex;">
-        <img alt="예제 이미지" src={{image_url[0]}} style="width: 33%;" onclick="getImageSrc(event)">
-        <img alt="예제 이미지" src={{image_url[1]}} style="width: 33%;" onclick="getImageSrc(event)">
-        <img alt="예제 이미지" src={{image_url[2]}} style="width: 33%;" onclick="getImageSrc(event)">
+    <header>
+        <div class="header-container">
+            <div id="logo"><a href="./" style="text-decoration:none">Pictter</a></div>
+        </div>
+    </header>
+    <div class="center-container">
+        <div class="h1-tag">
+            <h1>그림을 선택해 주세요</h1>
+        </div>
+        <div class="image-container">
+            <img class="image" alt="예제 이미지" src={{image_url[0]}} onclick="getImageSrc(event)">
+            <img class="image" alt="예제 이미지" src={{image_url[1]}} onclick="getImageSrc(event)">
+            <img class="image" alt="예제 이미지" src={{image_url[2]}} onclick="getImageSrc(event)">
+        </div>
     </div>
 </body>
+
 </html>

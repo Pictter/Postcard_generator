@@ -1,10 +1,9 @@
-from flask import Flask, request, render_template, session
+from flask import Flask, request, render_template, session, send_file, render_template
 from ChatGPT import ChatGPT
 from DALLE2 import dalle
 import urllib.request
 
 from _auth import random_string, md5_hash
-import os
 
 app = Flask(__name__)
 
@@ -44,6 +43,7 @@ def img():
 def selected_image():
     data = request.json
     img_src = data['imgSrc']
+    session["image_url_"]=img_src
     
     return render_template("selected-image.html",image_url=img_src, letter = session["input_text_"] )
 
