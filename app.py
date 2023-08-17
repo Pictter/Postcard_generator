@@ -19,7 +19,7 @@ def index():
 @app.route('/letter', methods=['POST'])
 def letter():
     letter_text = request.form.get("letter")
-    keyword = ChatGPT(letter_text)
+    keyword = ChatGPT(letter_text).split(', ')
     session["input_text_"] = letter_text
     session["keyword_"] = keyword  # 세션에 값을 저장
     return render_template("letter.html", keyword=keyword)
