@@ -9,18 +9,23 @@
 
 <body>
     <header>
-        <h1>Pictter</h1>
-    </header>
-    <h1>편지를 보내주셔서 감사합니다.</h1>
-    <p> 
-    <h3>입력해주신 편지를 기반으로 추출된 키워드를 알려드릴게요!</h3>
-        {{keyword}}
-    </p>
-    <form method="GET" action="/image">
-        <div class="button-container">
-            <button type="submit">편지 보내기</button>
+        <div class="header-container">
+            <div id="logo"><a href="./" style="text-decoration:none">Pictter</a></div>
         </div>
-    </form>
+    </header>
+
+    <div class="center-container">
+        <h1>편지를 보내주셔서 감사합니다.</h1>
+        <p>
+        <h3>입력해주신 편지를 기반으로 추출된 키워드를 알려드릴게요!</h3>
+        {{keyword}}
+        </p>
+        <form method="GET" action="/image">
+            <div class="button-container">
+                <button type="submit">편지 보내기</button>
+            </div>
+        </form>
+    </div>
 </body>
 
 </html>
