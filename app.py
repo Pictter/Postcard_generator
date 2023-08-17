@@ -21,5 +21,4 @@ def result():
     return render_template("letter.html",keyword=keyword)
 
 if __name__ == '__main__':
-
     app.run(debug=True)

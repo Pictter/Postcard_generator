@@ -1,7 +1,7 @@
 import openai
 import requests
 
-openai.api_key = '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'
+openai.api_key = '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'
 
 def dalle(msg_arr):
     user_keyword = ""
@@ -9,8 +9,7 @@ def dalle(msg_arr):
         user_keyword+=keyword
 
     # 시스템 임의 설정
-    add_prompt = "background, no text"
-    input_prompt=user_keyword+add_prompt
+    input_prompt="create background postcard painting with"+user_keyword+"and no person and text."
 
     response = openai.Image.create(
         prompt=input_prompt,

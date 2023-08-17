@@ -1,7 +1,7 @@
 import openai
 
 # OpenAI API 키 설정
-api_key = "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"
+api_key = "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"
 openai.api_key = api_key
 
 # ChatGPT API 호출
@@ -9,8 +9,8 @@ def ChatGPT(input_msg):
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",  # 사용할 엔진 선택 (gpt
         messages=[
-            {"role": "system", "content": "Look at the mood of this message, select 3 keywords, and return the results in English."},
-            {"role": "system", "content": "in the form of word1, word2, word3."},
+            {"role": "system", "content": "Look at the mood of this message, select 5 keywords, and return the results in English."},
+            {"role": "system", "content": "in the form of word1, word2, word3, word4, word5."},
             {"role": "user", "content": input_msg}
         ],
         max_tokens=50,  # 생성될 최대 토큰 수
