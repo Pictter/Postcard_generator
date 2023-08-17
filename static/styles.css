@@ -76,6 +76,16 @@ button[type="submit"] {
     cursor: pointer;
 }
 
+.button-keyword{
+    background-color: #FEFBE7;
+    color: #354259;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #A0BCC2;
+    cursor: pointer;
+}
+
 .center-container {
     display: flex;
     flex-direction: column;
