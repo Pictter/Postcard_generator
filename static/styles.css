@@ -76,7 +76,7 @@ button[type="submit"] {
     cursor: pointer;
 }
 
-.button-keyword{
+.button-keyword {
     background-color: #FEFBE7;
     color: #354259;
     padding: 10px;
@@ -93,6 +93,11 @@ button[type="submit"] {
     align-items: center;
     height: calc(100vh - 180px);
     /* 100vh에서 헤더 높이를 뺀 만큼 설정 */
+}
+
+.button-container {
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .header-container {
