@@ -18,8 +18,8 @@ def letter():
     letter = request.form.get('letter')
     global keyword 
     keyword = ChatGPT(letter)
-    # image = dalle(keyword)
-    # print(image)
+    image = dalle(keyword)
+    print(image)
     return render_template("letter.html",keyword=keyword)
 
 @app.route('/image')
