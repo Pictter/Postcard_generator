@@ -1,7 +1,7 @@
 import openai
 import requests
 
-openai.api_key = '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'
+openai.api_key = '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'
 
 def dalle(msg_arr):
     user_keyword = ""
