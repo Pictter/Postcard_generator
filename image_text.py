@@ -3,9 +3,7 @@ import io
 
 
 def process_cloudsight():
-
     
-
     # Image Captioning API URL 설정
     url = "https://image-caption-generator2.p.rapidapi.com/v2/captions/simple"
 

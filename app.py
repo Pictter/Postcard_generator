@@ -2,6 +2,7 @@ from flask import Flask, request, render_template, session, send_file, render_te
 from ChatGPT import ChatGPT
 from DALLE2 import dalle
 import urllib.request
+from Etri import Etri
 
 from _auth import random_string, md5_hash
 
@@ -21,7 +22,8 @@ def index():
 @app.route('/letter', methods=['POST'])
 def letter():
     letter_text = request.form.get("letter")
-    keyword = ChatGPT(letter_text).split(', ')
+    #keyword = Etri(letter_text).split(', ')
+    keyword = Etri(letter_text)
     session["input_text_"] = letter_text
     session["keyword_"] = keyword  # 세션에 값을 저장
     return render_template("letter.html", keyword=keyword)
