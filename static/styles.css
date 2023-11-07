@@ -67,6 +67,15 @@ textarea {
     margin-bottom: 10px;
     resize: none;
 }
+.button{
+    display:flex;
+    justify-content: center;
+}
+.button-container{
+    justify-content: center;
+    align-items: center; /* 센터 정렬 */
+    gap: 10px; /* 버튼 사이의 간격 */
+}
 
 button[type="submit"] {
     background-color: #FEFBE7;
@@ -78,7 +87,27 @@ button[type="submit"] {
     box-shadow: 2px 2px 5px #A0BCC2;
     cursor: pointer;
 }
+input[type="file"] {
+    background-color: #FEFBE7;
+    color: #354259;
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #A0BCC2;
+    cursor: pointer;
+}
 
+button[type="button"] {
+    background-color: #FEFBE7;
+    color: #354259;
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #A0BCC2;
+    cursor: pointer;
+}
 .h1-tag {
     margin-top: 30px;
 }
@@ -104,13 +133,6 @@ button[type="submit"] {
     /* 100vh에서 헤더 높이를 뺀 만큼 설정 */
 }
 
-.button-container {
-    margin: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
 
 .image-container {
     display: flex;
@@ -142,15 +164,6 @@ button[type="submit"] {
     box-shadow: 2px 2px 5px #A0BCC2;
 }
 
-.button-container {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.button-container {
-    text-align: center;
-    margin-top: 20px;
-}
 
 textarea {
     display: block;

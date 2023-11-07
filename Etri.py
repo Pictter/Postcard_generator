@@ -46,13 +46,12 @@ def Etri(input_msg):
     # 'weight' 키에 따라 morp_list 정렬 (내림차순)
     sorted_morp_list = sorted(morp_list, key=lambda x: x['weight'], reverse=True)
 
-    print("morp_list \n",sorted_morp_list)
 
     sorted_morp_list = [morp['lemma'] for morp in sorted_morp_list]
-    print("morp_list22 \n",sorted_morp_list)
+
 
     sorted_morp_list = list(set(sorted_morp_list))
-    print("morp_list22 \n",sorted_morp_list)
+
 
     sorted_morp_list[:10]
 
