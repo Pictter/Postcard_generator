@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="ko">
-<link rel="stylesheet" href="../static/styles.css">
-
 <head>
     <meta charset="utf-8" />
-    <title>image test</title>
+    <title>Image Test</title>
+    <link rel="stylesheet" href="../static/styles.css">
     <script>
+        // 이미지를 클릭했을 때 실행되는 함수
         function getImageSrc(event) {
             var imgSrc = event.target.src;
             console.log(imgSrc);
@@ -16,30 +16,48 @@
                 headers: {
                     'Content-Type': 'application/json'
                 }
-            }).then(response => response.text())
-                .then(html => {
-                    document.querySelector("body").innerHTML = html;
-                });
+            })
+            .then(response => response.text())
+            .then(html => {
+                // 특정 div의 내용을 변경합니다.
+                document.getElementById('content').innerHTML = html;
+            });
+        }
+
+        // TTS를 실행하는 함수
+        function startSpeech() {
+            const speech = new SpeechSynthesisUtterance();
+            const letterContent = document.getElementById('letter-content').textContent; // letter 내용을 가져옵니다
+            speech.lang = 'ko-KR';
+            speech.text = letterContent; // TTS로 재생할 텍스트
+            speech.volume = 1;
+            speech.rate = 0.8;
+            speech.pitch = 1;
+            window.speechSynthesis.speak(speech);
         }
     </script>
 </head>
-
 <body>
     <header>
         <div class="header-container">
             <div id="logo"><a href="./" style="text-decoration:none">Pictter</a></div>
         </div>
     </header>
-    <div class="center-container">
+    <button onclick="startSpeech()">음성으로 설명 듣기</button>
+    <div id="letter-content" style="display: none;">{{ letter }}</div>
+    <div id="content" class="center-container">
+        <!-- 내용이 업데이트 될 부분에 id를 추가합니다. -->
         <div class="h1-tag">
             <h1>그림을 선택해 주세요</h1>
         </div>
         <div class="image-container">
-            <img class="image" alt="예제 이미지" src={{image_url[0]}} onclick="getImageSrc(event)">
-            <img class="image" alt="예제 이미지" src={{image_url[1]}} onclick="getImageSrc(event)">
-            <img class="image" alt="예제 이미지" src={{image_url[2]}} onclick="getImageSrc(event)">
+            <img class="image" alt="예제 이미지" src="{{image_url[0]}}" onclick="getImageSrc(event)">
+            <img class="image" alt="예제 이미지" src="{{image_url[1]}}" onclick="getImageSrc(event)">
+            <img class="image" alt="예제 이미지" src="{{image_url[2]}}" onclick="getImageSrc(event)">
         </div>
+        <!-- TTS 버튼은 내용이 업데이트 되는 부분 밖에 위치하게 됩니다. -->
+        
     </div>
+    
 </body>
-
 </html>
