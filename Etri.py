@@ -41,7 +41,9 @@ def Etri(input_msg):
     
 
       # 명사만 추출합니다. (품사가 'NNG', 'NNP', 'NNB', 'NR', 'NP' 인 경우)
-    morp_list = [morp for morp in morp_list if morp['type'] in ('NNG', 'NNP', 'NNB', 'NR', 'NP')]
+    morp_list = [morp for morp in morp_list if morp['type'] in ('NNG', 'NNP', 'NNB', 'NR', 'NP',"")]
+    
+    #morp_list = [morp for morp in morp_list if morp['type'] not in ('EC','SF','VC')]
     
     # 'weight' 키에 따라 morp_list 정렬 (내림차순)
     sorted_morp_list = sorted(morp_list, key=lambda x: x['weight'], reverse=True)
@@ -53,7 +55,7 @@ def Etri(input_msg):
     sorted_morp_list = list(set(sorted_morp_list))
 
 
-    sorted_morp_list[:10]
+    sorted_morp_list[:20]
 
    
     return sorted_morp_list

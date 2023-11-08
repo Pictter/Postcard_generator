@@ -22,6 +22,7 @@ def index():
 @app.route('/letter', methods=['POST'])
 def letter():
     letter_text = request.form.get("letter")
+    print("letter_text",letter_text)
     #keyword = Etri(letter_text).split(', ')
     keyword = Etri(letter_text)
     session["input_text_"] = letter_text
@@ -34,7 +35,7 @@ def img():
     keyword = session.get("keyword_")
     input_text_ = session.get("input_text_")
     print(keyword)
-    print(input_text_)
+    print("input_text", input_text_)
     image_response = dalle(keyword)
     image_url = []
     for i in range(0, 3, 1):

@@ -69,15 +69,6 @@
             }
         }
 
-
-        function uploadAudio(){
-            if (audioInput.files.length > 0) {
-                var formData = new FormData();
-                formData.append('audioFile', audioInput.files[0]);
-                print("formData",formData);
-            }
-
-        }
     </script>
 
 
@@ -101,7 +92,6 @@
                     </form>
                     <button type="button" onclick="requestMicrophone()" id="startRecord">녹음 시작</button>
                     <button type="button" id="stopRecord">녹음 중지</button>
-                    <input type="file" id="audio-input" accept="audio/*" onchange="uploadAudio()" />
                 </div>
             </div>
        
