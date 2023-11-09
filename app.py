@@ -4,12 +4,13 @@ from DALLE2 import dalle
 import urllib.request
 from Etri import Etri
 from image_text import process_cloudsight
-
+import googletrans
 from _auth import random_string, md5_hash
 
 app = Flask(__name__)
 
 app.secret_key = md5_hash(random_string(32))
+
 
 
 @app.route("/")
@@ -33,6 +34,7 @@ def letter():
 
 @app.route("/image", methods=["GET"])
 def img():
+    translator = googletrans.Translator()
     keyword = session.get("keyword_")
     input_text_ = session.get("input_text_")
     # print("input_text", input_text_)
@@ -40,22 +42,23 @@ def img():
 
     image_response = dalle(newkeyworld)
     image_url = []
+    image_des = []
     for i in range(0, 3, 1):
         image_url.append(image_response["data"][i]["url"])
-
+        image_des.append(translator.translate(process_cloudsight(image_response["data"][i]["url"])["caption"], dest='ko').text)
     print("image_url", image_url)
-    return render_template("image.html", image_url=image_url, letter=input_text_)
+    return render_template("image.html", image_url=image_url, letter=input_text_, image_des=image_des)
 
 
 @app.route("/selected-image", methods=["POST"])
 def selected_image():
+    translator = googletrans.Translator()
     data = request.json
     img_src = data["imgSrc"]
     session["image_url_"] = img_src
     textres = process_cloudsight(img_src)
-    text = textres["caption"]
-    print(text)
-
+    text =  translator.translate(textres["caption"],dest='ko').text
+    
     return render_template(
         "selected-image.html",
         image_url=img_src,
