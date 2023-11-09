@@ -18,6 +18,6 @@ def ChatGPT(input_msg):
         ],
         max_tokens=50,  # 생성될 최대 토큰 수
     )
-
+    
 # 응답에서 생성된 텍스트 출력
     return (response.choices[0].message['content'].strip())

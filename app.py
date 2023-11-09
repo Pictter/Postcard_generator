@@ -10,12 +10,9 @@ app = Flask(__name__)
 
 app.secret_key = md5_hash(random_string(32))
 
+
+
 @app.route("/")
-def root():
-    return "hello world!"
-
-
-@app.route("/user")
 def index():
     return render_template("main.html")
 
@@ -42,8 +39,7 @@ def img():
         image_url.append(image_response["data"][i]["url"])
     
     print("image_url",image_url)
-    
-    return render_template("image.html", image_url=image_url)
+    return render_template("image.html", image_url=image_url, letter=input_text_)
 
 @app.route('/selected-image', methods=['POST'])
 def selected_image():
