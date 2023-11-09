@@ -9,7 +9,6 @@
         function getImageSrc(event) {
             var imgSrc = event.target.src;
             console.log(imgSrc);
-
             fetch('/selected-image', {
                 method: 'POST',
                 body: JSON.stringify({ imgSrc: imgSrc }),
