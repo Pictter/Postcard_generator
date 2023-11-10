@@ -110,14 +110,18 @@ button[type="button"] {
     border-radius: 3px;
 }
 
-/* button[type="button"]:hover {
-    background-color: #354259;
+button[type="button"]:hover {
+    background-color: #f1c40f;
     color: #FEFBE7;   
 }
- */
-.button-container{
-    display:flex;
+
+button[type="submit"]:hover {
+    background-color: #f1c40f;
+    color: #FEFBE7;   
 }
+
+
+
 
 
 .h1-tag {
@@ -292,6 +296,11 @@ textarea {
   .button-container{
     display:flex;
 
+  }
+
+  .speechclass:hover{
+    background-color: #f1c40f;
+    color: #FEFBE7;   
   }
   
   .submitButton{
