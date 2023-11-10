@@ -18,10 +18,10 @@
             console.log('Selected image:', selectedImage.imgSrc);
             console.log('Selected description:', selectedImage.description);
 
-            // 이미지 설명을 describeButton의 데이터 속성으로 저장합니다.
+          
             var describeButton = document.getElementById('describeButton');
             describeButton.dataset.description = selectedImage.description;
-            describeButton.disabled = false; // 버튼을 활성화합니다.
+            describeButton.disabled = false;
 
             var submitButton = document.getElementById('submitButton');
             submitButton.disabled = false;
@@ -38,29 +38,28 @@
             })
             .then(response => response.text())
             .then(html => {
-                // 특정 div의 내용을 변경합니다.
+               
                 document.getElementById('content').innerHTML = html;
             });
         }
 
-        // TTS를 실행하는 함수
+    
         function startSpeech() {
             const speech = new SpeechSynthesisUtterance();
-            const letterContent = document.getElementById('letter-content').textContent; // letter 내용을 가져옵니다
+            const letterContent = document.getElementById('letter-content').textContent; 
             speech.lang = 'ko-KR';
-            speech.text = letterContent; // TTS로 재생할 텍스트
+            speech.text = letterContent; 
             speech.volume = 1;
             speech.rate = 0.8;
             speech.pitch = 1;
             window.speechSynthesis.speak(speech);
         }   
 
-        // 이미지 설명을 TTS로 읽는 함수
         function startSpeech2() {
-            var description = document.getElementById('describeButton').dataset.description; // 버튼의 데이터 속성에서 설명을 가져옵니다.
+            var description = document.getElementById('describeButton').dataset.description;
             const speech2 = new SpeechSynthesisUtterance();
             speech2.lang = 'ko-KR';
-            speech2.text = description; // 읽어줄 설명 텍스트
+            speech2.text = description; 
             speech2.volume = 1;
             speech2.rate = 0.8;
             speech2.pitch = 1;
@@ -81,12 +80,12 @@
     
     <div id="letter-content" style="display: none;">{{ letter }}</div>
     <div id="content" class="center-container">
-        <!-- 내용이 업데이트 될 부분에 id를 추가합니다. -->
+        
         <div class="h1-tag">
             <h1>그림을 선택해 주세요</h1>
         </div>
         <div class="image-container">
-            <!-- data-index 속성을 추가하여 이미지를 구분할 수 있습니다. -->
+         
             <img class="image" alt="예제 이미지" src="{{image_url[0]}}" data-index="0" onclick="getImageSrc(event)">
             <img class="image" alt="예제 이미지" src="{{image_url[1]}}" data-index="1" onclick="getImageSrc(event)">
             <img class="image" alt="예제 이미지" src="{{image_url[2]}}" data-index="2" onclick="getImageSrc(event)">
@@ -94,7 +93,7 @@
         <div id="desc-0" style="display: none;">{{ image_des[0] }}</div>
         <div id="desc-1" style="display: none;">{{ image_des[1] }}</div>
         <div id="desc-2" style="display: none;">{{ image_des[2] }}</div>
-        <!-- TTS 버튼은 내용이 업데이트 되는 부분 밖에 위치하게 됩니다. -->
+      
         <button type="button"  class="speechclass2" onclick="submitLetter()">제출</button>
     </div>
 
