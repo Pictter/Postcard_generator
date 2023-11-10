@@ -1,45 +1,102 @@
 <!DOCTYPE html>
 <html lang="ko">
-<link rel="stylesheet" href="../static/styles.css">
-
 <head>
     <meta charset="utf-8" />
-    <title>image test</title>
+    <title>Image Test</title>
+    <link rel="stylesheet" href="../static/styles.css">
     <script>
+        var selectedImage = {
+            imgSrc: '',
+            description: ''
+        };
+        
         function getImageSrc(event) {
-            var imgSrc = event.target.src;
-            console.log(imgSrc);
+            selectedImage.imgSrc = event.target.src;
+            var index = event.target.getAttribute('data-index');
+            selectedImage.description = document.getElementById('desc-' + index).textContent;
+            
+            console.log('Selected image:', selectedImage.imgSrc);
+            console.log('Selected description:', selectedImage.description);
 
+          
+            var describeButton = document.getElementById('describeButton');
+            describeButton.dataset.description = selectedImage.description;
+            describeButton.disabled = false;
+
+            var submitButton = document.getElementById('submitButton');
+            submitButton.disabled = false;
+            
+        }
+
+        function submitLetter(){
             fetch('/selected-image', {
                 method: 'POST',
-                body: JSON.stringify({ imgSrc: imgSrc }),
+                body: JSON.stringify({ imgSrc: selectedImage.imgSrc, description: selectedImage.description }),
                 headers: {
                     'Content-Type': 'application/json'
                 }
-            }).then(response => response.text())
-                .then(html => {
-                    document.querySelector("body").innerHTML = html;
-                });
+            })
+            .then(response => response.text())
+            .then(html => {
+               
+                document.getElementById('content').innerHTML = html;
+            });
+        }
+
+    
+        function startSpeech() {
+            const speech = new SpeechSynthesisUtterance();
+            const letterContent = document.getElementById('letter-content').textContent; 
+            speech.lang = 'ko-KR';
+            speech.text = letterContent; 
+            speech.volume = 1;
+            speech.rate = 0.8;
+            speech.pitch = 1;
+            window.speechSynthesis.speak(speech);
+        }   
+
+        function startSpeech2() {
+            var description = document.getElementById('describeButton').dataset.description;
+            const speech2 = new SpeechSynthesisUtterance();
+            speech2.lang = 'ko-KR';
+            speech2.text = description; 
+            speech2.volume = 1;
+            speech2.rate = 0.8;
+            speech2.pitch = 1;
+            window.speechSynthesis.speak(speech2);
         }
     </script>
 </head>
-
 <body>
     <header>
         <div class="header-container">
             <div id="logo"><a href="./" style="text-decoration:none">Pictter</a></div>
         </div>
     </header>
-    <div class="center-container">
+    <div class="button-container">
+        <button class="speechclass" onclick="startSpeech()">편지 듣기</button>
+        <button id="describeButton" class="speechclass" onclick="startSpeech2()" disabled>이미지 설명 듣기</button>
+    </div>
+    
+    <div id="letter-content" style="display: none;">{{ letter }}</div>
+    <div id="content" class="center-container">
+        
         <div class="h1-tag">
             <h1>그림을 선택해 주세요</h1>
         </div>
         <div class="image-container">
-            <img class="image" alt="예제 이미지" src={{image_url[0]}} onclick="getImageSrc(event)">
-            <img class="image" alt="예제 이미지" src={{image_url[1]}} onclick="getImageSrc(event)">
-            <img class="image" alt="예제 이미지" src={{image_url[2]}} onclick="getImageSrc(event)">
+         
+            <img class="image" alt="예제 이미지" src="{{image_url[0]}}" data-index="0" onclick="getImageSrc(event)">
+            <img class="image" alt="예제 이미지" src="{{image_url[1]}}" data-index="1" onclick="getImageSrc(event)">
+            <img class="image" alt="예제 이미지" src="{{image_url[2]}}" data-index="2" onclick="getImageSrc(event)">
         </div>
+        <div id="desc-0" style="display: none;">{{ image_des[0] }}</div>
+        <div id="desc-1" style="display: none;">{{ image_des[1] }}</div>
+        <div id="desc-2" style="display: none;">{{ image_des[2] }}</div>
+      
+        <button type="button"  class="speechclass2" onclick="submitLetter()">제출</button>
     </div>
-</body>
 
+    
+</body>
 </html>

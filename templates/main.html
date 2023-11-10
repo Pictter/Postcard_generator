@@ -5,6 +5,74 @@
 
 <head>
     <title>Pictter</title>
+    <script>
+       
+        function requestMicrophone() {
+            navigator.mediaDevices.getUserMedia({ audio: true })
+                .then(stream => {
+                    startSpeechRecognition(); // Start speech recognition
+                })
+                .catch(error => {
+                    console.error('Error accessing the microphone', error);
+                });
+        }
+
+        // Speech recognition logic
+        function startSpeechRecognition() {
+            var transcript = '';
+            // Check if the browser supports the Web Speech API
+            if (!('webkitSpeechRecognition' in window)) {
+                alert('Web Speech API is not supported by this browser. Install Chrome version 25 or later.');
+                return;
+            }
+            
+            var recognition = new webkitSpeechRecognition();
+            recognition.lang = 'ko-KR'; // Set the language to Korean
+            recognition.continuous = true; // Set to true if you want the speech recognition to continue even if the user takes a break.
+            recognition.interimResults = true; // Set to true if you want to see the results while speaking.
+            
+            recognition.onstart = function() {
+                document.getElementById('recording-status').textContent = '녹음 및 인식 중...';
+            };
+            
+            recognition.onresult = function(event) {
+                var interimTranscript = ''; // 임시 결과를 담을 변수
+                var interimTranscript = ''; // 임시 결과를 담을 변수
+                for (var i = event.resultIndex; i < event.results.length; ++i) {
+                    if (event.results[i].isFinal) {
+                        transcript += event.results[i][0].transcript;
+                    } else {
+                        interimTranscript += event.results[i][0].transcript;
+                    }
+                }
+                // 최종 결과와 임시 결과를 각각 다른 필드에 표시할 수 있음
+                document.getElementById('letter').value = transcript + interimTranscript;
+                //document.getElementById('letter').value = transcript;
+            };
+            
+            recognition.onerror = function(event) {
+                document.getElementById('recording-status').textContent = '인식 오류: ' + event.error;
+            };
+            
+            recognition.onend = function() {
+                document.getElementById('recording-status').textContent = '';
+                document.getElementById('startRecord').disabled = false;
+            };
+
+            recognition.start();
+        }
+
+        function stopSpeechRecognition() {
+            if (recognition) {
+                recognition.stop();
+                document.getElementById('stopRecord').disabled = true; // Disable stop button after clicked
+            }
+        }
+
+    </script>
+
+
+
 </head>
 
 <body>
@@ -16,11 +84,16 @@
     </div>
     <div class="center-container">
         <h1>편지를 입력해주세요.</h1>
-        <form method="POST" action="/letter">
-            <textarea id="letter" name="letter" required rows="10" placeholder="contents" cols="80"></textarea>
-            <div class="button-container">
-                <button type="submit">편지 보내기</button>
+                <form method="POST" action="/letter">
+                <textarea id="letter" name="letter" required rows="10" placeholder="contents" cols="80"></textarea>
+                <div class="button">
+                    <div class="button-container">
+                        <button type="submit">편지 보내기</button>
+                    </form>
+                    <button type="button" onclick="requestMicrophone()" id="startRecord">녹음 시작</button>
+                    <button type="button" id="stopRecord">녹음 중지</button>
+                </div>
             </div>
-        </form>
+       
     </div>
 </body>
