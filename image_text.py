@@ -19,7 +19,4 @@ def process_cloudsight(img_url):
     response = requests.get(url, headers=headers, params=querystring)
     response.raise_for_status()  # 요청이 실패했을 경우 예외 발생
 
-    # 응답 출력
-    print("되나? 왜 안 돼?", response.json())
-
     return response.json()

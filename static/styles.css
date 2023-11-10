@@ -1,5 +1,5 @@
 header {
-    background-color: #354259;
+    background-color:  #2c3e50;
     color: #DAE5D0;
     font-family: 'TmoneyRoundWindExtraBold';
     text-align: center;
@@ -41,8 +41,8 @@ a:visited {
 }
 
 body {
-    background-color: #e4eef4;
-    color: #363636;
+    background-color: #354259;
+    color: #f1c40f;
     font-family: 'TmoneyRoundWindExtraBold';
     /* display: flex; */
     /* justify-content: center; */
@@ -71,57 +71,82 @@ textarea {
     display:flex;
     justify-content: center;
 }
-.button-container{
-    justify-content: center;
-    align-items: center; /* 센터 정렬 */
-    gap: 10px; /* 버튼 사이의 간격 */
+#button-keyword{
+    display:flex;
 }
 
 button[type="submit"] {
-    background-color: #FEFBE7;
-    color: #354259;
-    padding: 10px;
-    margin: 5px;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 2px 2px 5px #A0BCC2;
+    font-family: 'TmoneyRoundWindExtraBold';
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 16px;
+    background-color:#354259;
+    color: rgb(241, 241, 235);
+    border: 2px solid #f1c40f;
     cursor: pointer;
-}
-input[type="file"] {
-    background-color: #FEFBE7;
-    color: #354259;
-    padding: 10px;
-    margin: 5px;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 2px 2px 5px #A0BCC2;
-    cursor: pointer;
+    margin : 20px;
+
+    display:flex;
+    flex-direction : row;
+    justify-content : center;
+    border-radius: 3px;
+   
 }
 
+
 button[type="button"] {
-    background-color: #FEFBE7;
-    color: #354259;
-    padding: 10px;
-    margin: 5px;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 2px 2px 5px #A0BCC2;
+    font-family: 'TmoneyRoundWindExtraBold';
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color:#354259;
+    color: rgb(241, 241, 235);
+    border: 2px solid #f1c40f;
     cursor: pointer;
+    margin : 20px;
+
+    display:flex;
+    flex-direction : row;
+    justify-content : center;
+    border-radius: 3px;
 }
+
+button[type="button"]:hover {
+    background-color: #f1c40f;
+    color: #FEFBE7;   
+}
+
+button[type="submit"]:hover {
+    background-color: #f1c40f;
+    color: #FEFBE7;   
+}
+
+
+
+
+
 .h1-tag {
     margin-top: 30px;
 }
 
 
-.button-keyword {
-    background-color: #FEFBE7;
-    color: #354259;
-    padding: 10px;
-    margin: 5px;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 2px 2px 5px #A0BCC2;
+/* 버튼 제출하기 */
+.button-submit{
+    font-family: 'TmoneyRoundWindExtraBold';
+    width : 30%;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 16px;
+    background-color:#354259;
+    color: rgb(241, 241, 235);
+    border: 2px solid #f1c40f;
     cursor: pointer;
+    margin : 20px;
+
+    display:flex;
+    flex-direction : row;
+    justify-content : center;
+    border-radius: 10px;
+
 }
 
 .center-container {
@@ -153,15 +178,6 @@ button[type="button"] {
     justify-content: center;
     align-items: center;
     /* 100vh에서 헤더 높이를 뺀 만큼 설정 */
-}
-
-button[type="submit"] {
-    background-color: #FEFBE7;
-    color: #354259;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 2px 2px 5px #A0BCC2;
 }
 
 
@@ -260,13 +276,72 @@ textarea {
     margin-bottom: 20px;
 }
 
-.speechclass{
-    position: relative;
-    text-align: center;
-    width: auto;
-    height: 30px;
-    background-color: #FEFBE7;
-    color: #354259;
-    left: 48%;
-    margin-top: 10px;
-}
+
+/* 버튼 */ 
+.button-container{
+    display:flex;
+    justify-content: center;
+  }
+.speechclass  {
+    font-family: 'TmoneyRoundWindExtraBold';
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    font-weight: 16px;
+    background-color:#354259;
+    color: rgb(241, 241, 235);
+    border: 2px solid #f1c40f;
+    cursor: pointer;
+    margin : 50px;
+
+    display:flex;
+    flex-direction : row;
+    justify-content : center;
+    border-radius: 3px;
+  }
+
+  .speechclass2{
+    font-family: 'TmoneyRoundWindExtraBold';
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    font-weight: 16px;
+    background-color:#354259;
+    color: rgb(241, 241, 235);
+    border: 2px solid #f1c40f;
+    cursor: pointer;
+    margin : 20px;
+    width : 30%;
+
+    display:flex;
+    flex-direction : row;
+    justify-content : center;
+    border-radius: 10px;
+
+  }
+
+  .speechclass:hover{
+    background-color: #f1c40f;
+    color: #FEFBE7;   
+  }
+  .speechclass2:hover{
+    background-color: #f1c40f;
+    color: #FEFBE7;   
+  }
+  
+  .submitButton{
+    font-family: 'TmoneyRoundWindExtraBold';
+    padding: 10px 30px;
+    font-size: 16px;
+    font-weight: 16px;
+    background-color:#e4eef4;
+    color: rgb(216, 204, 204);
+
+    border: 2px solid rgb(192, 196, 201);
+    cursor: pointer;
+    margin : 20px;
+
+    display:flex;
+    flex-direction : row;
+    justify-content : center;
+    border-radius: 10px;
+
+  }
