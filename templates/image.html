@@ -29,7 +29,6 @@
         }
 
         function submitLetter(){
-            print("selectedimg",selectedImage.imgSrc)
             fetch('/selected-image', {
                 method: 'POST',
                 body: JSON.stringify({ imgSrc: selectedImage.imgSrc, description: selectedImage.description }),

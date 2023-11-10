@@ -45,8 +45,6 @@ def Etri(input_msg):
 
     sentence_list = response_data_json["return_object"]["sentence"]
 
-    text_morp = response_data_json["return_object"]["sentence"][1]["word"]
-
 
     # morp_list = [morp for morp in morp_list if morp['type'] not in ('EC','SF','VC')]
 
