@@ -5,22 +5,33 @@
     <title>Image Test</title>
     <link rel="stylesheet" href="../static/styles.css">
     <script>
-        // 이미지를 클릭했을 때 실행되는 함수
+        var selectedImage = {
+            imgSrc: '',
+            description: ''
+        };
+        
         function getImageSrc(event) {
-            var imgSrc = event.target.src;
-            var index = event.target.getAttribute('data-index'); // Get the index of the clicked image
-            var description = document.getElementById('desc-' + index).textContent; // Get the corresponding description
-            console.log(imgSrc);
+            selectedImage.imgSrc = event.target.src;
+            var index = event.target.getAttribute('data-index');
+            selectedImage.description = document.getElementById('desc-' + index).textContent;
+            
+            console.log('Selected image:', selectedImage.imgSrc);
+            console.log('Selected description:', selectedImage.description);
 
             // 이미지 설명을 describeButton의 데이터 속성으로 저장합니다.
             var describeButton = document.getElementById('describeButton');
-            describeButton.dataset.description = description;
+            describeButton.dataset.description = selectedImage.description;
             describeButton.disabled = false; // 버튼을 활성화합니다.
 
-            // 선택된 이미지를 서버로 POST 요청을 보내는 코드 (이 부분은 서버 구현에 따라 다를 수 있습니다)
+            var submitButton = document.getElementById('submitButton');
+            submitButton.disabled = false;
+            
+        }
+
+        function submitLetter(){
             fetch('/selected-image', {
                 method: 'POST',
-                body: JSON.stringify({ imgSrc: imgSrc, description: description }),
+                body: JSON.stringify({ imgSrc: selectedImage.imgSrc, description: selectedImage.description }),
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -63,8 +74,8 @@
             <div id="logo"><a href="./" style="text-decoration:none">Pictter</a></div>
         </div>
     </header>
-    <button class="speechclass" onclick="startSpeech()">음성으로 설명 듣기</button>
-    <button id="describeButton" onclick="startSpeech2()" disabled>설명 듣기</button>
+    <button class="speechclass" onclick="startSpeech()">편지 듣기</button>
+    <button id="describeButton" onclick="startSpeech2()" disabled>이미지 설명 듣기</button>
     
     <div id="letter-content" style="display: none;">{{ letter }}</div>
     <div id="content" class="center-container">
@@ -82,8 +93,9 @@
         <div id="desc-1" style="display: none;">{{ image_des[1] }}</div>
         <div id="desc-2" style="display: none;">{{ image_des[2] }}</div>
         <!-- TTS 버튼은 내용이 업데이트 되는 부분 밖에 위치하게 됩니다. -->
-        
+        <button id="submitButton" onclick="submitLetter()" disabled>제출</button>
     </div>
+
     
 </body>
 </html>
