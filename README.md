@@ -1,7 +1,9 @@
 # Postcard_generator
 Postcard Picture Generator: Creates a picture based on the keyword of the letter.
 
-# Pictter
+# ETRI_OpenAPI공모전
+![image](https://github.com/Pictter/ETRI-PICTURE/assets/112956015/3b7d050c-9e10-49b7-ad5e-b7217f1838a5)
+
 ![openAPI_GAE4COON_page-0001](https://github.com/Pictter/ETRI-PICTURE/assets/112956015/a4579688-e638-4c54-977a-fdfadd2d0559)
 ![openAPI_GAE4COON_page-0002](https://github.com/Pictter/ETRI-PICTURE/assets/112956015/e63ed87c-c948-496d-b0ec-df9283da1723)
 ![openAPI_GAE4COON_page-0003](https://github.com/Pictter/ETRI-PICTURE/assets/112956015/23a0858b-ebd9-4779-99d1-89a40737bd13)
