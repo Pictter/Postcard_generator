@@ -55,15 +55,19 @@ def Etri(input_msg):
 
     sorted_morp_list = [morp["lemma"] for morp in sorted_morp_list]
 
-    for i in range(len(sentence_list)):
-        for j in range(len(response_data_json["return_object"]["sentence"][i]["word"])):
-            text = response_data_json["return_object"]["sentence"][i]["word"][j]['text']
-            hangul_range = range(0xAC00, 0xD7A3+1)  # Unicode range for Hangul
+    if(len(sentence_list) != 0) :
+        for i in range(len(sentence_list)):
+            for j in range(len(response_data_json["return_object"]["sentence"][i]["word"])):
+                text = response_data_json["return_object"]["sentence"][i]["word"][j]['text']
+                hangul_range = range(0xAC00, 0xD7A3+1)  # Unicode range for Hangul
 
-            if not any(ord(char) in hangul_range for char in text):
-                continue
-            else:
-                sorted_morp_list.append(str(text))
+                if not any(ord(char) in hangul_range for char in text):
+                    continue
+                else:
+                    sorted_morp_list.append(str(text))
+            
+    
+   
 
     sorted_morp_list = list(set(sorted_morp_list))
 
